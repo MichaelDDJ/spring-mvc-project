@@ -13,4 +13,13 @@ public class ProductService {
     public List<Product> getAllProducts() {
        return products;
     }
+
+    public Product getProductByName(String name) {
+        for (Product p : products) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
 }

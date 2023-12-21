@@ -29,6 +29,6 @@ public class SpringMvcProjectApplication {
 		//line to divide results
 		System.out.println("==================================================================");
 
-
+		System.out.println(service.getProductByName("MacBook"));
 	}
 }
