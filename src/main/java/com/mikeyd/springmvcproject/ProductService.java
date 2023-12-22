@@ -4,25 +4,37 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Stream;
 
 public class ProductService {
 
     List<Product> products = new ArrayList<>();
+    ProductDB db = new ProductDB();
     public void addProduct(Product p){
+
         products.add(p);
+
+        db.save(p);
     }
 
     public List<Product> getAllProducts() {
-       return products;
+
+        return db.getAll();
     }
 
     public Product getProductByName(String name) {
-        for (Product p : products) {
+        Stream<Product> data = products.stream();
+        return data.filter(p -> p
+                        .getName().equals(name))
+                        .findFirst()
+                        .orElse(null);
+
+        /*for (Product p : products) {
             if (p.getName().equals(name)) {
                 return p;
             }
         }
-        return null;
+        return null;*/
     }
 
 
